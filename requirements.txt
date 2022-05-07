@@ -1,3 +1,4 @@
 requests>=2.25.0
 selenium>=4.1.0
 pytest>=7.0.0
+webdriver-manager
