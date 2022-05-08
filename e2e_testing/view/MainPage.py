@@ -91,29 +91,37 @@ class MainPage(BaseView):
             raise ValueError("Cannot move other than player pieces")
         element.click()
         element = self.get_tile(destination)
-        if not self.is_tile_free(element):
-            raise ValueError("Cannot move to a not free tile")
         element.click()
         self.wait_for_player()
         # The movement can be considered successful if the starting position is empty or with an opponent piece
         element = self.get_tile(start)
         return not self.is_tile_player(element)
 
-    def wait_for_opponent(self):
+    def wait_for_opponent(self, tries=3):
         """
         Wait for opponent to complete his turn
+        :param tries: How many time it should try to wait before returning
         """
-        time.sleep(MOVE_WAIT_TIME)
+        if tries:
+            time.sleep(MOVE_WAIT_TIME)
+        else:
+            return
         if not self.player_can_move():
-            self.wait_for_opponent()
+            tries = tries - 1
+            self.wait_for_opponent(tries)
 
-    def wait_for_player(self):
+    def wait_for_player(self, tries=3):
         """
         Wait for player to complete his action
+        :param tries: How many time it should try to wait before returning
         """
-        time.sleep(1)
+        if tries:
+            time.sleep(MOVE_WAIT_TIME)
+            tries = tries - 1
+        else:
+            return
         if self.player_moving():
-            self.wait_for_player()
+            self.wait_for_player(tries)
 
     def player_moving(self) -> bool:
         """
