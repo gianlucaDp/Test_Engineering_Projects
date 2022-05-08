@@ -102,26 +102,26 @@ class MainPage(BaseView):
         Wait for opponent to complete his turn
         :param tries: How many time it should try to wait before returning
         """
-        if tries:
-            time.sleep(MOVE_WAIT_TIME)
-        else:
+        if not tries:
             return
-        if not self.player_can_move():
-            tries = tries - 1
-            self.wait_for_opponent(tries)
+        else:
+            time.sleep(MOVE_WAIT_TIME)
+            tries -= 1
+            if not self.player_can_move():
+                self.wait_for_opponent(tries)
 
     def wait_for_player(self, tries=3):
         """
         Wait for player to complete his action
         :param tries: How many time it should try to wait before returning
         """
-        if tries:
-            time.sleep(MOVE_WAIT_TIME)
-            tries = tries - 1
-        else:
+        if not tries:
             return
-        if self.player_moving():
-            self.wait_for_player(tries)
+        else:
+            time.sleep(MOVE_WAIT_TIME)
+            tries -= 1
+            if self.player_moving():
+                self.wait_for_player(tries)
 
     def player_moving(self) -> bool:
         """
