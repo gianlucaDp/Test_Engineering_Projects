@@ -102,7 +102,7 @@ class MainPage(BaseView):
         Wait for opponent to complete his turn
         :param tries: How many time it should try to wait before returning
         """
-        if not tries:
+        if tries <= 0:
             return
         else:
             time.sleep(MOVE_WAIT_TIME)
@@ -115,7 +115,7 @@ class MainPage(BaseView):
         Wait for player to complete his action
         :param tries: How many time it should try to wait before returning
         """
-        if not tries:
+        if tries <= 0:
             return
         else:
             time.sleep(MOVE_WAIT_TIME)
