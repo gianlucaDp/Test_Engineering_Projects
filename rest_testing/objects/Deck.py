@@ -1,8 +1,8 @@
 from typing import List
 
-import api_testing.requests.DeckRequests as Dr
-from api_testing.objects.Card import Card
-from api_testing.objects.Pile import Pile
+import rest_testing.requests.DeckRequests as Dr
+from rest_testing.objects.Card import Card
+from rest_testing.objects.Pile import Pile
 
 
 class Deck:

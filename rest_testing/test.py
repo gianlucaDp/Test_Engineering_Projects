@@ -1,4 +1,4 @@
-from api_testing.objects.Deck import Deck
+from rest_testing.objects.Deck import Deck
 
 
 def test_draw_divide_shuffle():

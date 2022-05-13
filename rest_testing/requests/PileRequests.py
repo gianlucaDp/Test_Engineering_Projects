@@ -1,6 +1,6 @@
 import requests
 
-from api_testing.requests.BaseRequests import BASE_URL, handle_response
+from rest_testing.requests.BaseRequests import BASE_URL, handle_response
 
 
 @handle_response

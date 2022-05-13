@@ -1,7 +1,7 @@
 from typing import List
 
-from api_testing.objects.Card import Card
-import api_testing.requests.PileRequests as Pr
+from rest_testing.objects.Card import Card
+import rest_testing.requests.PileRequests as Pr
 
 
 class Pile:
