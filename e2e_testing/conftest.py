@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.service import Service as chrome_service
 from e2e_testing.view.MainPage import MainPage
 
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(scope="session")
 def driver():
     driver = webdriver.Chrome(service=chrome_service(ChromeDriverManager().install()))
     yield driver
